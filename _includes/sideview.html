@@ -1,0 +1,18 @@
+<!-- archives -->
+<h5>글 보관함 <small>{{ site.posts | size }}</small></h5>
+<ul class="side-nav">
+    {% assign postsByYear = site.posts | group_by_exp:"post", "post.date | date: '%Y'" %}
+    {% for year in postsByYear %}
+    <li><a href="/blog/archive/{{ year.name }}">{{ year.name }} ({{ year.items | size }})</a></li>
+    {% endfor %}
+</ul>
+
+<!-- tag -->
+<div class="panel">
+    <h5>태그</h5>
+    <ul class="side-nav">
+        {% for tag in site.tags %}
+        <li><a href="/blog/tag/{{ tag[0] }}">{{ tag[0] }} ({{ tag[1] | size }})</a></li>
+        {% endfor %}
+    </ul>
+</div>
